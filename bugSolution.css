@@ -1,0 +1,20 @@
+The following CSS code snippet demonstrates the corrected way to handle CSS variables and the `calc()` function:
+
+```css
+:root {
+  --main-color: blue;
+}
+
+.element {
+  background-color: var(--main-color);
+  color: var(--nonexistent-color, red); /* Use default value */
+  border: 1px solid var(--main-color);
+}
+
+/* Correct usage of calc() */
+.container {
+  width: calc((20% + 100px));
+}
+```
+
+This revised code addresses the potential problems: it provides a default value for `--nonexistent-color`, ensuring consistent behavior across different browsers and prevents the `calc()` issue via parenthesization.  It's important to thoroughly test CSS code across multiple browsers to account for discrepancies.
