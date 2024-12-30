@@ -1,0 +1,32 @@
+The following CSS code snippet demonstrates an uncommon error that might arise when working with CSS variables (custom properties):
+
+```css
+:root {
+  --main-color: blue;
+}
+
+.element {
+  background-color: var(--main-color);
+  /* Incorrect usage of var() function */
+  color: var(--nonexistent-color, red); /* Use default value */
+  border: 1px solid var(--main-color);
+}
+```
+
+The issue lies in the handling of CSS variables that may not exist. If a CSS variable is accessed using the `var()` function but is not defined, the CSS specification does not provide consistent behavior across browsers. For instance, some browsers may return an empty string or the default value, and others might produce unpredictable results.
+
+Another uncommon bug occurs when using CSS `calc()` and there is an unexpected order of operation.
+
+```css
+width:calc(20% + 100px);
+```
+
+This might not produce the desired result due to the order of operation. To resolve this, use parenthesis appropriately.  For example:
+
+```css
+width:calc((20% + 100px));
+```
+
+This issue is less common but can be difficult to find.
+
+Furthermore, problems related to specificity can be challenging to debug and are often subtle. They involve situations where conflicting style rules apply to the same element. Understanding specificity is crucial for CSS troubleshooting. In these cases, using the browser developer tools (e.g., in Chrome, Firefox, or Edge) is highly recommended.  The tools allow inspecting individual elements, identifying the applied styles, and precisely determining which rule overrides others. This is frequently an overlooked method of dealing with these issues.
